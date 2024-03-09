@@ -1,0 +1,39 @@
+---
+title: "deber_clase_1_pfsh"
+author: "Pablo Sarango"
+date: "2024-03-05"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Preguntas 
+1. **Identifica la pregunta principal de investigación del estudio.**
+
+¿Cuál es el efecto que puede tener la gamificación en el aprendizaje de los estudiantes en comparación con los métodos de enseñanza tradicionales que involucran conferencias y ejercicios de lectura?
+
+2. **¿Quiénes fueron los sujetos de este estudio y cuántos se incluyeron?**
+
+365 estudiantes (hombres y mujeres) de dos carreras: Ingeniería Eléctrica e informática (n = 279) y Administración de Empresas (n = 86).
+
+3. **¿Cuáles son las variables en el estudio? Identifique cada variable como numérica o categórica. Si es numérica, indique si la variable es discreta o continua. Si es categórico, indique si la variable es ordinal.**
+
+**Numérica**
+
+*Discreta*
+
+- Evaluación final
+
+**Categórica**
+
+- Nivel de estudios 
+- Género de los estudiantes
+- Carrea académica 
+- Experiencia en el idioma inglés
+- Experiencia en el uso de computadoras personales
+- Experiencia en juegos
+
+
+
