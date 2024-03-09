@@ -1,0 +1,110 @@
+---
+title: "deber_clase_2_pfsh"
+author: "Pablo Sarango"
+date: "2024-03-05"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Más ejercicios de lectura
+Dentro de la carpeta `/data` hay distintos archivos que contienen la información de 6 columnas
+de la ENESEM (descrita en clase). El ejercicio consiste en:
+
+1. Instala las librerias necesarias para poder leer los archivos de extensión: `.xlsx, .dta, .sav`.
+
+```{r}
+# install.packages(c("readxl","haven"))
+```
+
+
+3. Carga las librerias en la sesión de R
+
+```{r}
+library(readxl)
+library(haven)
+```
+``
+3. Utiliza las funciones necesarias de cada libreria para leer los archivos y guardalos como tablas u objetos.
+
+```{r}
+
+# Importar archivo .csv
+archivo_csv <- read.csv("~/enesem_tics.csv")
+
+# Importar archivo .dta
+archivo_dta <- read_dta("~/enesem_tics.dta")
+
+# Importar archivo .sav
+archivo_sav <- read_sav("~/enesem_tics.sav")
+
+# Importar archivo .txt
+archivo_txt <- read.table("~/enesem_tics.txt", header = TRUE, sep = ";")
+
+# Importar archivo .xlsx
+archivo_xlsx <- read_excel("~/enesem_tics.xlsx")
+```
+
+4. Emplea la función `class()` sobre cada uno de ellos ¿Hay alguna diferencia en los resultados? ¿Que pasa si usamos la función `typeof()`?
+
+```{r}
+# Funcion class() -------------------------------------------------------
+class(archivo_csv)
+# "data.frame" 
+
+class(archivo_dta)
+# "tbl_df"     "tbl"        "data.frame"
+
+class(archivo_sav)
+# "tbl_df"     "tbl"        "data.frame"
+
+class(archivo_txt)
+# "data.frame"
+
+class(archivo_xlsx)
+# "tbl_df"     "tbl"        "data.frame"
+
+# Funcion typeof() -------------------------------------------------------
+typeof(archivo_csv)
+# "list"
+
+typeof(archivo_dta)
+# "list"
+
+typeof(archivo_sav)
+# "list"
+
+typeof(archivo_txt)
+# "list"
+
+typeof(archivo_xlsx)
+# "list"
+
+```
+
+- La función `class()` nos dice la clase del objeto.
+- La función `typeof()` nos dice el modo de almacenamiento del objeto. 
+
+6. Emplea la función  `attributes()` sobre cada objeto y observa los resultados en la consola.
+
+Al aplicar `attributes()` a cada objeto se devuelven los atributos:
+`$names`
+`$class`
+`$row.names`
+para cada uno de los objetos. 
+
+
+
+```{r}
+
+numero_empleados <- archivo_csv[c("n_emp_m", "n_emp_h")]
+
+numero_empleados$numero_total_empleados <- numero_empleados$n_emp_h + numero_empleados$n_emp_m
+
+tamanio_empresa <- table(cut(numero_empleados$numero_total_empleados, breaks = c(1,10,50,100,200,Inf)))
+
+print(tamanio_empresa)
+```
+
